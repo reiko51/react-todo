@@ -15,7 +15,7 @@ export const App = () => {
         <button>追加</button>
       </div>
       <div className="incomplete-area">
-        <p class="title">未完了のTODO</p>
+        <p className="title">未完了のTODO</p>
         <ul>
           {incompleteTodos.map((todo) => {
             return (
@@ -29,7 +29,7 @@ export const App = () => {
         </ul>
       </div>
       <div className="complete-area">
-        <p class="title">完了のTODO</p>
+        <p className="title">完了のTODO</p>
         <ul>
           {completeTodos.map((todo) => {
             return (
