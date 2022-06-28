@@ -13,27 +13,58 @@ export const App = () => {
     setTodoText("");
     // alert(todoText);
   };
+
+  //配列とインデックスと追加要素を受け取って配列を作成する機能
+  const funTest = (array, idx, addText) => {
+    // console.log("array:" + array);
+    // console.log("idx:" + idx);
+    // console.log("addText:" + addText);
+    // console.log("maxLength:" + array.length);
+    const newArray = [...array];
+    if (addText !== "") {
+      newArray[newArray.length] = addText;
+    }
+    if (idx > -1) {
+      newArray.splice(idx, 1);
+    }
+    // console.log("newArray:" + newArray);
+    return newArray;
+  };
+
   const onCllickDelete = (index) => {
-    const newTodos = [...incompleteTodos];
-    newTodos.splice(index, 1);
-    setIncompleteTodos(newTodos);
-    // alert(index);
+    const ans = funTest(incompleteTodos, index, "");
+    setIncompleteTodos(ans);
+    // const newTodos = [...incompleteTodos];
+    // newTodos.splice(index, 1);
+    // setIncompleteTodos(newTodos);
   };
   const onClickComplete = (index) => {
-    const newIncompleteTodos = [...incompleteTodos];
-    newIncompleteTodos.splice(index, 1);
-    setIncompleteTodos(newIncompleteTodos);
+    const ans = funTest(incompleteTodos, index, "");
+    setIncompleteTodos(ans);
 
-    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
-    setCompleteTodos(newCompleteTodos);
+    const ansComp = funTest(completeTodos, -1, incompleteTodos[index]);
+    setCompleteTodos(ansComp);
+
+    // const newIncompleteTodos = [...incompleteTodos];
+    // newIncompleteTodos.splice(index, 1);
+    // setIncompleteTodos(newIncompleteTodos);
+
+    // const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    // setCompleteTodos(newCompleteTodos);
   };
   const onClickBack = (index) => {
-    const newCompleteTodos = [...completeTodos];
-    newCompleteTodos.splice(index, 1);
-    setCompleteTodos(newCompleteTodos);
+    const ans = funTest(completeTodos, index, "");
+    setCompleteTodos(ans);
 
-    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
-    setIncompleteTodos(newIncompleteTodos);
+    const ansInComp = funTest(incompleteTodos, -1, completeTodos[index]);
+    setIncompleteTodos(ansInComp);
+
+    // const newCompleteTodos = [...completeTodos];
+    // newCompleteTodos.splice(index, 1);
+    // setCompleteTodos(newCompleteTodos);
+
+    // const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    // setIncompleteTodos(newIncompleteTodos);
   };
 
   return (
